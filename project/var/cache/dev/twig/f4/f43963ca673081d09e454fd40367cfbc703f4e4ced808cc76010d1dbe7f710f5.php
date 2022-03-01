@@ -74,7 +74,7 @@ class __TwigTemplate_07aa712b59fd3600aca6ed23f8850e2bc2256b4b66ec2f145b203da60e0
 
     ";
         // line 8
-        echo twig_include($this->env, $context, "admin_article/_form.html.twig", ["button_label" => "Update"]);
+        echo twig_include($this->env, $context, "admin_article/_form.html.twig", ["button_label" => "Modifier"]);
         echo "
 
     <a href=\"";
@@ -116,7 +116,7 @@ class __TwigTemplate_07aa712b59fd3600aca6ed23f8850e2bc2256b4b66ec2f145b203da60e0
 {% block body %}
     <h1>Modifier l'article</h1>
 
-    {{ include('admin_article/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin_article/_form.html.twig', {'button_label': 'Modifier'}) }}
 
     <a href=\"{{ path('app_admin_article_index') }}\">Retour à la liste</a>
 

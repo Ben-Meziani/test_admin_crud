@@ -180,6 +180,7 @@
     <parameter key="doctrine.migrations.preferred_connection">null</parameter>
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
+      <parameter>bootstrap_5_layout.html.twig</parameter>
     </parameter>
     <parameter key="twig.default_path">/var/www/project/templates</parameter>
     <parameter key="security.role_hierarchy.roles" type="collection"/>

@@ -39,7 +39,6 @@ class AdminArticleController extends AbstractController
             $images = $form->get('picture')->getData();
             foreach($images as $image){
                 $file = md5(uniqid()).'.'.$image->guessExtension();
-                
                 $image->move(
                     $this->getParameter('images_directory'),
                     $file

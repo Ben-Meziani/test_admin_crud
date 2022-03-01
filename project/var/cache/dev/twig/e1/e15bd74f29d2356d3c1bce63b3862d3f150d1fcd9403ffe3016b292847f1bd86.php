@@ -80,7 +80,7 @@ class __TwigTemplate_b69eccd4e7e311e512b5130122d0330e3b1eb6afe27ed799045c0db71bc
     <a href=\"";
         // line 10
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_admin_article_index");
-        echo "\">back to list</a>
+        echo "\">Retour à la liste</a>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -113,7 +113,7 @@ class __TwigTemplate_b69eccd4e7e311e512b5130122d0330e3b1eb6afe27ed799045c0db71bc
 
     {{ include('admin_article/_form.html.twig') }}
 
-    <a href=\"{{ path('app_admin_article_index') }}\">back to list</a>
+    <a href=\"{{ path('app_admin_article_index') }}\">Retour à la liste</a>
 {% endblock %}
 ", "admin_article/new.html.twig", "/var/www/project/templates/admin_article/new.html.twig");
     }
