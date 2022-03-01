@@ -22,7 +22,45 @@
         </tbody>
     </table>
 
-    
+<h3>Images de l'article</h3>
+{% if article.pictures is empty %}
+	<p>Aucune image disponible</p>
+{% else %}
+
+{% if article.pictures|length > 1 %}
+<div data-slider>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width: 50%; height:auto;">
+	<div class="carousel-indicators">
+		{% for picture in article.pictures %}
+			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %} class="active" {% endif %} aria-current="true" aria-label="Slide 1"></button>
+		{% endfor %}
+	</div>
+	<div class="carousel-inner">
+		{% for picture in article.pictures %}
+			<div {% if loop.index0 == 0 %} class="carousel-item active" {% else %} class="carousel-item" {% endif %}>
+				<img src="{{ asset('/uploads/'~picture.name) }}" alt="card-img-top" style="width: 100%; height:auto;">
+			</div>
+		{% endfor %}
+	</div>
+	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Précédente</span>
+	</button>
+	<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Suivante</span>
+	</button>
+</div>
+{% else %}
+ {% for picture in article.pictures %}
+	<div class="card" style="wid">
+		<img src="{{ asset('/uploads/'~picture.name) }}" alt="card-img-top"  style="width=100%">
+	</div>
+{% endfor %}
+	</dd>
+{% endif %}
+
+{% endif %}
 
     <a href="{{ path('app_admin_article_index') }}"  class="btn btn-primary">Retour à la liste</a>
 
