@@ -220,11 +220,11 @@ class __TwigTemplate_d04dee2914de703848dcb31f6e4d849c6b30a9af1b5f30c43be21b22967
                 $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["article"]) || array_key_exists("article", $context) ? $context["article"] : (function () { throw new RuntimeError('Variable "article" does not exist.', 55, $this->source); })()), "pictures", [], "any", false, false, false, 55));
                 foreach ($context['_seq'] as $context["_key"] => $context["picture"]) {
                     // line 56
-                    echo "\t<div class=\"card\" style=\"wid\">
+                    echo "\t<div class=\"card mb-5\" style=\"width: 500px\">
 \t\t<img src=\"";
                     // line 57
                     echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("/uploads/" . twig_get_attribute($this->env, $this->source, $context["picture"], "name", [], "any", false, false, false, 57))), "html", null, true);
-                    echo "\" alt=\"card-img-top\"  style=\"width=100%\">
+                    echo "\" alt=\"card-img-top\"  style=\"width=100%\"> 
 \t</div>
 ";
                 }
@@ -333,8 +333,8 @@ class __TwigTemplate_d04dee2914de703848dcb31f6e4d849c6b30a9af1b5f30c43be21b22967
 </div>
 {% else %}
  {% for picture in article.pictures %}
-\t<div class=\"card\" style=\"wid\">
-\t\t<img src=\"{{ asset('/uploads/'~picture.name) }}\" alt=\"card-img-top\"  style=\"width=100%\">
+\t<div class=\"card mb-5\" style=\"width: 500px\">
+\t\t<img src=\"{{ asset('/uploads/'~picture.name) }}\" alt=\"card-img-top\"  style=\"width=100%\"> 
 \t</div>
 {% endfor %}
 \t</dd>

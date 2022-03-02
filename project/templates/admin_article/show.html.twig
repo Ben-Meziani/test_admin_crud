@@ -53,8 +53,8 @@
 </div>
 {% else %}
  {% for picture in article.pictures %}
-	<div class="card" style="wid">
-		<img src="{{ asset('/uploads/'~picture.name) }}" alt="card-img-top"  style="width=100%">
+	<div class="card mb-5" style="width: 500px">
+		<img src="{{ asset('/uploads/'~picture.name) }}" alt="card-img-top"  style="width=100%"> 
 	</div>
 {% endfor %}
 	</dd>
