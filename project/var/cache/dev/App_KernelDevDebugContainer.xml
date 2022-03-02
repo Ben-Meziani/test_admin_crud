@@ -4286,6 +4286,14 @@
         <argument key="articleRepository" type="service_closure" id="App\Repository\ArticleRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.lc.DPF8" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="article" type="service_closure" id=".errored..service_locator.lc.DPF8.App\Entity\Article"/>
+        <argument key="articleRepository" type="service_closure" id="App\Repository\ArticleRepository"/>
+        <argument key="image" type="service_closure" id=".errored..service_locator.lc.DPF8.App\Entity\Picture"/>
+      </argument>
+    </service>
     <service id=".service_locator._4jDfkh" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -4301,10 +4309,10 @@
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.1DGVof4" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.JDe0MR1" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Controller\Admin\AdminArticleController::delete" type="service_closure" id=".service_locator.Ah80EsV"/>
+        <argument key="App\Controller\Admin\AdminArticleController::delete" type="service_closure" id=".service_locator.lc.DPF8"/>
         <argument key="App\Controller\Admin\AdminArticleController::edit" type="service_closure" id=".service_locator.Ah80EsV"/>
         <argument key="App\Controller\Admin\AdminArticleController::index" type="service_closure" id=".service_locator.ys8EL7c"/>
         <argument key="App\Controller\Admin\AdminArticleController::new" type="service_closure" id=".service_locator.ys8EL7c"/>
@@ -4317,7 +4325,7 @@
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel::terminate" type="service_closure" id=".service_locator.KfwZsne"/>
-        <argument key="App\Controller\Admin\AdminArticleController:delete" type="service_closure" id=".service_locator.Ah80EsV"/>
+        <argument key="App\Controller\Admin\AdminArticleController:delete" type="service_closure" id=".service_locator.lc.DPF8"/>
         <argument key="App\Controller\Admin\AdminArticleController:edit" type="service_closure" id=".service_locator.Ah80EsV"/>
         <argument key="App\Controller\Admin\AdminArticleController:index" type="service_closure" id=".service_locator.ys8EL7c"/>
         <argument key="App\Controller\Admin\AdminArticleController:new" type="service_closure" id=".service_locator.ys8EL7c"/>
@@ -4627,12 +4635,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.1DGVof4"/>
+      <argument type="service" id=".service_locator.JDe0MR1"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.1DGVof4"/>
+      <argument type="service" id=".service_locator.JDe0MR1"/>
     </service>
     <service id=".doctrine.orm.default_metadata_driver.inner" class="Doctrine\Persistence\Mapping\Driver\MappingDriverChain">
       <call method="addDriver">
@@ -4644,6 +4652,8 @@
     <service id=".errored..service_locator.KfbR3DY.Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface"/>
     <service id=".errored..service_locator.ewTmbP1.App\Entity\Article" class="App\Entity\Article"/>
     <service id=".errored..service_locator.Ah80EsV.App\Entity\Article" class="App\Entity\Article"/>
+    <service id=".errored..service_locator.lc.DPF8.App\Entity\Article" class="App\Entity\Article"/>
+    <service id=".errored..service_locator.lc.DPF8.App\Entity\Picture" class="App\Entity\Picture"/>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
       <argument type="collection"/>
@@ -5331,7 +5341,7 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.1DGVof4"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.JDe0MR1"/>
     <service id="session" alias=".session.do-not-use" public="true">
       <deprecated package="symfony/framework-bundle" version="5.3">The "%alias_id%" service and "SessionInterface" alias are deprecated, use "$requestStack-&gt;getSession()" instead.</deprecated>
     </service>
@@ -5339,8 +5349,9 @@
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
+    <service id=".service_locator..oXuKFT" alias=".service_locator.lc.DPF8"/>
     <service id=".service_locator.dWxL7vx" alias=".service_locator._4jDfkh"/>
-    <service id=".service_locator.T3B2w2k" alias=".service_locator.1DGVof4"/>
+    <service id=".service_locator.54PKhEk" alias=".service_locator.JDe0MR1"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.19_mNxd"/>
     <service id=".service_locator.zI0x4of" alias=".service_locator.uTKDOt9"/>
     <service id=".service_locator.4hi2aOY" alias=".service_locator.bBRwv06"/>
@@ -5366,6 +5377,7 @@
     <service id=".service_locator.SXPi9O." alias=".service_locator.ys8EL7c"/>
     <service id=".service_locator.i0u2lVX" alias=".service_locator.ewTmbP1"/>
     <service id=".service_locator.bjOlIcS" alias=".service_locator.Ah80EsV"/>
+    <service id=".service_locator.6xSFtG9" alias=".service_locator.lc.DPF8"/>
     <service id=".service_locator.JURprHa" alias=".service_locator._4jDfkh"/>
     <service id=".service_locator.kXCVHeG" alias=".service_locator.UDgw6Ol"/>
     <service id=".service_locator.S3Bk2.h" alias=".service_locator.GNc8e5B"/>

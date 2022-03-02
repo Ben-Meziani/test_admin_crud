@@ -36,6 +36,7 @@ class AdminArticleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //Je télécharge le fichier image
             self::uploadImage($form, $article);
             $articleRepository->add($article);
             return $this->redirectToRoute('app_admin_article_index', [], Response::HTTP_SEE_OTHER);
@@ -66,6 +67,7 @@ class AdminArticleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //Je télécharge le fichier image
             self::uploadImage($form, $article);
             $articleRepository->add($article);
             return $this->redirectToRoute('app_admin_article_index', [], Response::HTTP_SEE_OTHER);
@@ -80,9 +82,12 @@ class AdminArticleController extends AbstractController
     /**
      * @Route("/{id}", name="app_admin_article_delete", methods={"POST"})
      */
-    public function delete(Request $request, Article $article, ArticleRepository $articleRepository): Response
+    public function delete(Picture $image, Request $request, Article $article, ArticleRepository $articleRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
+            //Supprime mon fichier image du serveur
+            $name = $image->getName();
+            unlink($this->getParameter('images_directory').'/'.$name);
             $articleRepository->remove($article);
         }
 
