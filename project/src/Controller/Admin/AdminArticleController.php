@@ -36,18 +36,7 @@ class AdminArticleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $images = $form->get('picture')->getData();
-            foreach($images as $image){
-                $file = md5(uniqid()).'.'.$image->guessExtension();
-                $image->move(
-                    $this->getParameter('images_directory'),
-                    $file
-                );
-                
-                $img = new Picture();
-                $img->setName($file);
-                $article->addPicture($img);
-            }
+            self::uploadImage($form, $article);
             $articleRepository->add($article);
             return $this->redirectToRoute('app_admin_article_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -77,19 +66,7 @@ class AdminArticleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $images = $form->get('picture')->getData();
-            foreach($images as $image){
-                $file = md5(uniqid()).'.'.$image->guessExtension();
-                
-                $image->move(
-                    $this->getParameter('images_directory'),
-                    $file
-                );
-                
-                $img = new Picture();
-                $img->setName($file);
-                $article->addPicture($img);
-            }
+            self::uploadImage($form, $article);
             $articleRepository->add($article);
             return $this->redirectToRoute('app_admin_article_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -110,5 +87,20 @@ class AdminArticleController extends AbstractController
         }
 
         return $this->redirectToRoute('app_admin_article_index', [], Response::HTTP_SEE_OTHER);
+    }
+    public function uploadImage($form, $article)
+    {
+        $images = $form->get('picture')->getData();
+        foreach($images as $image){
+            $file = md5(uniqid()).'.'.$image->guessExtension();
+            $image->move(
+                $this->getParameter('images_directory'),
+                $file
+            );
+            
+            $img = new Picture();
+            $img->setName($file);
+            $article->addPicture($img);
+        }
     }
 }
