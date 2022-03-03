@@ -87,6 +87,19 @@ class __TwigTemplate_730e9579237a46bf20f5651f44ed469f788e3a872db76de31e857fa3618
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["articles"]) || array_key_exists("articles", $context) ? $context["articles"] : (function () { throw new RuntimeError('Variable "articles" does not exist.', 18, $this->source); })()));
         $context['_iterated'] = false;
+        $context['loop'] = [
+          'parent' => $context['_parent'],
+          'index0' => 0,
+          'index'  => 1,
+          'first'  => true,
+        ];
+        if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
+            $length = count($context['_seq']);
+            $context['loop']['revindex0'] = $length - 1;
+            $context['loop']['revindex'] = $length;
+            $context['loop']['length'] = $length;
+            $context['loop']['last'] = 1 === $length;
+        }
         foreach ($context['_seq'] as $context["_key"] => $context["article"]) {
             // line 19
             echo "            <tr>
@@ -111,14 +124,22 @@ class __TwigTemplate_730e9579237a46bf20f5651f44ed469f788e3a872db76de31e857fa3618
             // line 25
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_admin_article_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["article"], "id", [], "any", false, false, false, 25)]), "html", null, true);
             echo "\"  class=\"btn btn-warning\">Modifier</a>
-                    <a href=\"";
+                    ";
             // line 26
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_admin_article_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["article"], "id", [], "any", false, false, false, 26)]), "html", null, true);
-            echo "\" class=\"btn btn-danger\" onclick=\"return confirm('Confirmez la suppression')\">Supprimer</a>
+            echo twig_include($this->env, $context, "admin_article/_delete_form.html.twig");
+            echo "
                 </td>
             </tr>
         ";
             $context['_iterated'] = true;
+            ++$context['loop']['index0'];
+            ++$context['loop']['index'];
+            $context['loop']['first'] = false;
+            if (isset($context['loop']['length'])) {
+                --$context['loop']['revindex0'];
+                --$context['loop']['revindex'];
+                $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+            }
         }
         if (!$context['_iterated']) {
             // line 30
@@ -156,7 +177,7 @@ class __TwigTemplate_730e9579237a46bf20f5651f44ed469f788e3a872db76de31e857fa3618
 
     public function getDebugInfo()
     {
-        return array (  139 => 37,  134 => 34,  125 => 30,  116 => 26,  112 => 25,  108 => 24,  103 => 22,  99 => 21,  95 => 20,  92 => 19,  87 => 18,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  160 => 37,  155 => 34,  146 => 30,  129 => 26,  125 => 25,  121 => 24,  116 => 22,  112 => 21,  108 => 20,  105 => 19,  87 => 18,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -186,7 +207,7 @@ class __TwigTemplate_730e9579237a46bf20f5651f44ed469f788e3a872db76de31e857fa3618
                 <td>
                     <a href=\"{{ path('app_admin_article_show', {'id': article.id}) }}\"  class=\"btn btn-primary\">Montrer</a>
                     <a href=\"{{ path('app_admin_article_edit', {'id': article.id}) }}\"  class=\"btn btn-warning\">Modifier</a>
-                    <a href=\"{{ path('app_admin_article_delete', {'id': article.id}) }}\" class=\"btn btn-danger\" onclick=\"return confirm('Confirmez la suppression')\">Supprimer</a>
+                    {{ include('admin_article/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
